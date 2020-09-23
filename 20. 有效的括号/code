@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> res;
+        for(char c : s) {
+            if(c=='(' || c=='{' || c=='[')
+                res.push(c);
+            else if(!res.empty() && judge(c)==res.top())
+                res.pop();
+            else return false;
+        }
+        return res.empty();
+    }
+    char judge(char c) {
+        if(c==')') return '(';
+        if(c=='}') return '{';
+        return '[';
+    }
+};
