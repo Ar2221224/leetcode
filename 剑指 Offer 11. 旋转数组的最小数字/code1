@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int minArray(vector<int>& numbers) {
+        int p=0,q=numbers.size()-1,n=0;
+        while(p<q) {
+            int mid=(q-p)/2+p;
+            if(numbers[mid]>numbers[q])
+                p=mid+1;
+            else if(numbers[mid]<numbers[q])
+                q=mid;
+            else q--;
+        }
+        return numbers[p];
+    }
+};
