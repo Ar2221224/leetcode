@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_set<int> hash;
+        int res;
+        for(int i : nums)
+            if(hash.count(i))
+                hash.erase(i);
+            else hash.insert(i);
+        for(int j : hash)
+            res=j;
+        return res;
+    }
+};
