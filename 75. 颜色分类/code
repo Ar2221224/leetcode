@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int a[3];
+        memset(a,0,sizeof(a));
+        for(int i : nums)
+            a[i]++;
+        int j,k;
+        for(j=0;j<a[0];j++)
+            nums[j]=0;
+        for(k=0;k<a[1];k++,j++)
+            nums[j]=1;
+        for(k=0;k<a[2];k++,j++)
+            nums[j]=2;
+    }
+};
