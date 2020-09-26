@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& matrix) {
+        vector<int> res;
+        int x=matrix.size(),y=matrix.size()==0?-1:matrix[0].size();
+        for(int i=0;i<=x+y-2;i++)
+            if(i%2==1) { //i%2==0从列0开始 i%2==1从行0开始
+                for(int a=0;a<=i;a++)
+                    if(a<x&&i-a<y)
+                        res.push_back(matrix[a][i-a]);
+            }
+            else {
+                for(int a=0;a<=i;a++)
+                    if(a<y&&i-a<x)
+                        res.push_back(matrix[i-a][a]);
+            }
+        return res;
+    }
+};
