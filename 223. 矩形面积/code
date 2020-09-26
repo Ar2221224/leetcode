@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+        long long AreaA=(C-A)*(D-B);
+        long long AreaB=(G-E)*(H-F);
+        long long AreaC;
+        long long x1=max(A,E);
+        long long x2=min(C,G);
+        long long y1=max(B,F);
+        long long y2=min(D,H);
+        if(x1<=x2&&y1<=y2)
+            AreaC=(x2-x1)*(y2-y1);
+        else AreaC=0;
+        return (AreaA+AreaB-AreaC);
+    }
+};
