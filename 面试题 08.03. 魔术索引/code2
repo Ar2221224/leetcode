@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int ans=-1;
+    int findMagicIndex(vector<int>& nums) {
+        dfs(0,nums.size()-1,nums);
+        return ans;
+    }
+    bool dfs(int l,int r,vector<int>& nums) {
+        if(l>r) 
+            return false;
+        int mid=(r-l)/2+l;
+        if(mid==nums[mid]) {
+            ans=mid;
+            dfs(l,mid-1,nums);
+            return true;
+        }
+        if(dfs(l,mid-1,nums)) 
+            return true;
+        return dfs(mid+1,r,nums);
+    }
+};
