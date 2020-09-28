@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int kthToLast(ListNode* head, int k) {
+        ListNode* p=head;
+        ListNode* q=head;
+        while(k--)
+            p=p->next;
+        while(p) {
+            p=p->next;
+            q=q->next;
+        }
+        return q->val;
+    }
+};
