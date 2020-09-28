@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int minMoves2(vector<int>& nums) {
+        int res=0,x=0,y=nums.size()-1;
+        sort(nums.begin(),nums.end());
+        while(x<y)   //首尾两数差即为两数移动的次数
+            res+=nums[y--]-nums[x++];
+        return res;
+    }
+};
