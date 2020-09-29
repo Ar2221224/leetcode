@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isRobotBounded(string instructions) {
+        vector<int> res(4,0);
+        int dir=0;
+        for(int i=0;i<4*instructions.length();i++) {
+            int n=i%instructions.length();
+            if(instructions[n]=='G') res[dir]++;
+            if(instructions[n]=='L') dir+=3;
+            if(instructions[n]=='R') dir+=1;
+            dir%=4;
+        }
+        return res[0]==res[2]&&res[1]==res[3];
+    }
+};d
