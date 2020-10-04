@@ -1,0 +1,11 @@
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        return judge(root,LONG_MIN,LONG_MAX);
+    }
+    bool judge(TreeNode* root,long long lower, long long upper) {
+        if(root==NULL) return true;
+        if(root->val<= lower || root->val>=upper) return false;
+        return judge(root->left,lower,root->val) && judge(root->right,root->val,upper);
+    }
+};
