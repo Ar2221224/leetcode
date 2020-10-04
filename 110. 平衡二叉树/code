@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(root==NULL) return true;
+        int h1=deep(root->left);
+        int h2=deep(root->right);
+        if(abs(h1-h2)>1) return false;
+        return isBalanced(root->left) && isBalanced(root->right);
+    }
+    int deep(struct TreeNode* root) {
+        if(root==NULL) return true;
+        int S1=1+deep(root->left);
+        int S2=1+deep(root->right);
+        return max(S1,S2);
+    }
+};
