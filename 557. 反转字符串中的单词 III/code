@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        if(s.size()==0) return s;
+        string res,temp;
+        for(char c : s) {
+            if(c==' ') {
+                reverse(temp.begin(),temp.end());
+                copy(temp.begin(),temp.end(),back_inserter(res));
+                temp.clear();
+                res.push_back(c);
+            }
+            else {
+                temp.push_back(c);
+            }
+        }
+        reverse(temp.begin(),temp.end());
+        copy(temp.begin(),temp.end(),back_inserter(res));
+        temp.clear();
+        return res;
+    }
+};
