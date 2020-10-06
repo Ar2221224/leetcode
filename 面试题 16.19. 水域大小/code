@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> res;
+    int n,m;
+    int count=0;
+    int dx[8]={1,-1,0,0,1,-1,1,-1};
+    int dy[8]={0,0,1,-1,1,-1,-1,1};
+    vector<int> pondSizes(vector<vector<int>>& land) {
+        n=land.size();
+        m=land[0].size();
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
+                if(land[i][j]==0) {
+                    dfs(land,i,j);
+                    res.push_back(count);
+                    count=0;
+                }
+        sort(res.begin(),res.end());
+        return res;
+    }
+    void dfs(vector<vector<int>>& land,int x,int y) {
+        if(x<0 || x>=n || y<0 || y>=m) return;
+        if(land[x][y]==0) {
+            count++;
+            land[x][y]=-1;
+            for(int q=0;q<8;q++)
+                dfs(land,x+dx[q],y+dy[q]);
+        }
+    }
+};
