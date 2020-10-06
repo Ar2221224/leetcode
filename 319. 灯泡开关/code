@@ -1,0 +1,9 @@
+class Solution {
+public:
+    int bulbSwitch(int n) {
+        //开关偶数次为灭，奇数次为亮
+        //质数3 1开3关  合数6  1开2关3开6关 结果都为灭
+        //平方数4 1开2关4开  平方数16 1开2关4开8关16开 结果都为亮
+        return sqrt(n);
+    }
+};
