@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool validPalindrome(string s) {
+        return Travelsal(s,0,s.size()-1,0);
+    }
+    bool Travelsal(string& s,int left,int right,int count) {
+        if(left>=right) return true;
+        if(s[left]!=s[right]) {
+            count++;
+            if(count>1)
+                return false;
+            return (Travelsal(s,left+1,right,count) || Travelsal(s,left,right-1,count));
+        }
+        return Travelsal(s,left+1,right-1,count);
+    }
+};
