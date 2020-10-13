@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        return dig(root);
+    }
+    int dig(TreeNode* node) {
+        if(node==NULL) return 0;
+        if(node->left==NULL && node->right!=NULL)
+            return 1+dig(node->right);
+        if(node->left!=NULL && node->right==NULL)
+            return 1+dig(node->left);
+        return 1+min(dig(node->left),dig(node->right));
+    }
+};
