@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int monotoneIncreasingDigits(int N) {
+        string num=to_string(N); //to_string整数转字符串
+        int t=num.size();
+        for(int i=num.size()-1;i>=1;i--) {
+            if(num[i]<num[i-1]) {
+                t=i; //记录降位后一位转9的个数
+                num[i-1]--;
+            }
+        }
+        while(t<num.size())
+            num[t++]='9';
+        stringstream s;
+        s<<num;
+        int res=0;
+        s>>res;
+        return res; //流
+    }
+};
