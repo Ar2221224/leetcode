@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& nums) {
+        vector<int> index(nums.size());
+        vector<string> ans(nums.size());
+        iota(index.begin(),index.end(),0);
+            //iota  index 0 1 2 3 4...
+        sort(index.begin(),index.end(),[&nums](const int& i,const int& j) {
+            return nums[j]<nums[i];
+        });
+        if(nums.size()>0) ans[index[0]]="Gold Medal";
+        if(nums.size()>1) ans[index[1]]="Silver Medal";
+        if(nums.size()>2) ans[index[2]]="Bronze Medal";
+        for(int i=3;i<nums.size();i++)
+            ans[index[i]]=to_string(i+1);
+        return ans;
+    }
+};
+//int number[10]
+//iota(number,number+10,100)
+//100 101 102 103 104 105 106 107 108 109
