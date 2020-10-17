@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string compressString(string S) {
+        string res;
+        if(S.size()<=1) return S;
+        char c=S[0];
+        int count=1;
+        res+=c;
+        for(int i=1;i<S.size();i++) {
+            if(c==S[i])
+                count++;
+            else {
+                res+=to_string(count);
+                c=S[i];
+                count=1;
+                res+=c;
+            }
+        }
+        res+=to_string(count);
+        if(S.size()>res.size()) return res;
+        else return S;
+    }
+};
