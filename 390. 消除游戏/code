@@ -1,0 +1,8 @@
+class Solution {
+public:
+    int lastRemaining(int n) {
+        return n==1?1:2*(n/2+1-lastRemaining(n/2));
+        //如果输入是a而输出是b那么输入是2a时的输出就是2*(a-b+1)
+        //如果输入是奇数，只要找比它小1的偶数当作输入就好了
+    }
+};
