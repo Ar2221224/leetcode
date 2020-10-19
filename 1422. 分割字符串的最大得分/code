@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int sum1=0;
+        for(char a : s)
+            if(a=='1')
+                sum1++;
+        int res=0;
+        int cur0=0,cur1=0;
+        for(int i=0;i<s.size()-1;i++) {
+            char c=s[i];
+            if(c=='0')
+                cur0++;
+            else
+                cur1++;
+            int score=cur0+sum1-cur1;
+            res=max(res,score);
+        }
+        return res;
+    }
+};
