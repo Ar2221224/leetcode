@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minAddToMakeValid(string S) {
+        int res=0,l=0,r=0;
+        for(auto& c : S) {
+            if(c=='(') l++;
+            else r++;
+            if(r>l) {
+                res++;
+                r--; //补左括号 如())
+            }
+        }
+        res+=l-r; //补右括号 如 (((
+        return res;
+    }
+};
