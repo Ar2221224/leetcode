@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool isNumber(string s) {
+        while(s.length() && s[0]==' ')
+            s.erase(0,1); //去掉开头的空格
+        while(s.length() && s[s.length()-1]==' ')
+            s.erase(s.length()-1,1); //去掉结尾的空格
+        if(s.length()==0) 
+            return false; //没有数字
+        int count=0,point=0,exp=0;
+        for(int i=0;i<s.length();i++) {
+            if(s[i]==' ')
+                return false; //中间不得有空格
+            else if(s[i]=='+' || s[i]=='-') {
+                if(i!=0 && s[i-1]!='e' && s[i-1]!='E')   
+                    return false; //+ -只能出现在开头或者e后面
+            }
+            else if(s[i]=='.') {
+                if(point>0 || exp>0) return false;
+                point++; //一个数至多只能有一个. 且e后面不能有.
+            }
+            else if(s[i]=='e' || s[i]=='E') {
+                if(count==0 || exp>0) return false;
+                exp++; //一个数至多只能有一个e 且e前面必须有数
+            }            
+            else if(s[i]>='0' && s[i]<='9')
+                count++; //数字记位
+            else return false; //其他字符
+        }
+        if(count==0 || s[s.length()-1]=='e' || s[s.length()-1]=='E' || s[s.length()-1]=='+' || s[s.length()-1]=='-') 
+            return false; //count为0说明没有数字 e + -不能在最后一位
+        return true;
+    }
+};   //括号不要省略
