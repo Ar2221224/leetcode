@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        vector<int> S;
+        int res=0;
+        for(auto c : ops) {
+            if(c[0]=='C') {
+                res-=S.back();
+                S.pop_back();
+            }
+            else if(c[0]=='D') {
+                int val=2*S.back();
+                res+=val;
+                S.push_back(val);
+            }
+            else if(c[0]=='+') {
+                int val=S[S.size()-2]+S.back();
+                res+=val;
+                S.push_back(val);
+            }
+            else {
+                int val;
+                sscanf(c.c_str(),"%d",&val); //val=stod(c);
+                res+=val;
+                S.push_back(val);
+            }
+        }
+        return res;
+    }
+};
+//sscanf从字符串读取格式化输入 c_str()通常用于函数内,返回指针常量
