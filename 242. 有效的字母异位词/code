@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.length()!=t.length()) 
+            return false;
+        int hash_s[26]={0};
+        int hash_t[26]={0};
+        for(auto a : s)
+            hash_s[a-'a']++;
+        for(auto b : t)
+            hash_t[b-'a']++;
+        for(int i=0;i<26;i++)
+            if(hash_s[i]!=hash_t[i]) 
+                return false;
+        return true;
+    }
+};
+
+// class Solution {
+// public:
+//     bool isAnagram(string s, string t) {
+//         sort(s.begin(),s.end());
+//         sort(t.begin(),t.end());
+//         return s==t;
+//     }
+// };
