@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
+        vector<vector<int>> res(R*C,vector<int>(3));
+        int num=0;
+        for(int i=0;i<R;i++)
+            for(int j=0;j<C;j++) {
+                res[num][0]=i;
+                res[num][1]=j;
+                res[num++][2]=abs(r0-i)+abs(c0-j);
+            }
+        sort(res.begin(),res.end(),cmp);
+        for(int i=0;i<num;i++)
+            res[i].pop_back(); //pop_back删除最后一个元素
+        return res;
+    }
+
+    static bool cmp(vector<int> &a,vector<int> &b) {
+        return a[2]<b[2];
+    }
+};
