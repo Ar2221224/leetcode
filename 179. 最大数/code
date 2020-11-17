@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        if(nums.size()==0) return "";
+        if(nums.size()==1) return to_string(nums[0]);
+        string res="";
+        sort(nums.begin(),nums.end(),cmp);
+        for(int i : nums)
+            res+=to_string(i);
+        if(res[0]=='0') return "0";
+        return res;
+    }
+
+    static bool cmp(const int &a,const int &b) {
+        string temp1=to_string(a)+to_string(b);
+        string temp2=to_string(b)+to_string(a);
+        return temp1>temp2;
+    }
+};
