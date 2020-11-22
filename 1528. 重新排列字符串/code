@@ -1,0 +1,11 @@
+class Solution {
+public:
+    string restoreString(string s, vector<int>& indices) {
+        int n=indices.size();
+        string res(n,0); //此处需要先设0
+        for(int i=0;i<indices.size();i++) {
+            res[indices[i]]=s[i];
+        }
+        return res;
+    }
+};
