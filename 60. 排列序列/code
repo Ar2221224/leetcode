@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        vector<int> v;
+        for(int i=1;i<=n;i++)
+            v.emplace_back(i);
+        string ans="";
+        while(n) {
+            int factorial=mul(n-1);
+            int t=(k-1)/factorial;
+            ans+=(v[t]+'0'); //v从下标0开始
+            v.erase(v.begin()+t);
+            k-=(t*factorial);
+            n--;
+        }
+        return ans;
+    }
+    int mul(int num) {
+        int ans=1;
+        for(int i=1;i<=num;i++)
+            ans*=i;
+        return ans;
+    }
+};
