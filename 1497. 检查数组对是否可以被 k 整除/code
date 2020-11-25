@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool canArrange(vector<int>& arr, int k) { //-8%5=-3
+        vector<int> mod(k);
+        for(int a : arr)
+            mod[(a%k+k)%k]++; //负数转正数余
+        for(int i=1;i<=k/2;i++)
+            if(mod[i]!=mod[k-i])
+                return false;
+        return mod[0]%2==0;
+    }
+};
