@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool lemonadeChange(vector<int>& bills) {
+        int hash[15];
+        hash[5]=0;
+        hash[10]=0;
+        for(int i=0;i<bills.size();i++) {
+            if(bills[i]==5)
+                hash[5]++;
+            else if(bills[i]==10) {
+                hash[10]++;
+                hash[5]--;
+            }
+            else if(hash[10]>0 && hash[5]>0) {
+                hash[10]--;
+                hash[5]--;
+            } //优先给10块找零，保证5块零钱充足
+            else if(hash[5]>2)
+                hash[5]-=3; 
+            else return false; //20块无法找零
+            if(hash[5]<0 || hash[10]<0)
+                return false; //5块或10块零钱不足
+        }
+        return true;
+    }
+};
