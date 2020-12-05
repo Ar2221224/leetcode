@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        int bottle=numBottles,ans=numBottles;
+        while(bottle>=numExchange) {
+            bottle-=numExchange; //换一瓶酒
+            ans++; //结果+1
+            bottle++; //喝完酒空瓶+1
+        }
+        return ans;
+    }
+};
