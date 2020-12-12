@@ -1,0 +1,15 @@
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* pt=new ListNode(0);
+        pt->next=head;
+        for(auto p=pt;p->next && p->next->next; ) {
+            auto a=p->next,b=p->next->next;
+            a->next=b->next;
+            b->next=a;
+            p->next=b;
+            p=a;
+        }
+        return pt->next;
+    }
+};
