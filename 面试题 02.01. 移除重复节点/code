@@ -1,0 +1,16 @@
+class Solution {
+public:
+    ListNode* removeDuplicateNodes(ListNode* head) {
+        int hash[20010]={0};
+        memset(hash,0,sizeof(hash));
+        ListNode* p=head;
+        while(p && p->next) {
+            hash[p->val]=1;
+            if(hash[p->next->val])
+                p->next=p->next->next;
+            else
+                p=p->next;
+        }
+        return head;
+    }
+};
