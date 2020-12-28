@@ -1,0 +1,15 @@
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        map<int,int> mp;
+        ListNode *p=head;
+        while(p && p->next) {
+            mp[p->val]=1;
+            if(mp[p->next->val])
+                p->next=p->next->next;
+            else
+                p=p->next;
+        }
+        return head;
+    }
+};
