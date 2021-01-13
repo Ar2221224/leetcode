@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string reformat(string s) {
+        string a,b;
+        for(char c : s)
+            if(isdigit(c))
+                a+=c;
+            else
+                b+=c;
+        int n=a.size()-b.size(),p=0,q=0;
+        if(n>1 || n<-1)
+            return "";
+        string res;
+        if(a.size()>b.size())
+            swap(a,b);
+        int i=0;
+        for( ;i<a.size();i++) {
+            res+=b[i];
+            res+=a[i];
+        }
+        if(i<b.size())
+            res+=b[i];
+        return res;
+    }
+};
